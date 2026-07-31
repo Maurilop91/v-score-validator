@@ -32,3 +32,71 @@ A running record of every prompt given in this project.
 26. git add . / git commit -m "feat: add commands, memory layer, self-learning loop, and two-part output"
 27. [Idea evaluation] AI-powered blockchain platform to transform healthcare globally (connect all stakeholders in one ecosystem, AI diagnoses + blockchain records + automation, target "everyone who uses healthcare", five revenue streams, launch worldwide ASAP). Full run with two-part output -> PoC 17 / Market 39 / Reframe or Shelve -> NOT VIABLE YET; only Market Size scored high (8, assessed independently); persisted eval-2026-07-31-005.
 28. git add . / git commit -m "feat: complete V-Score Validator capstone"
+
+# V-Score Validator
+
+Agentic Engineering Training Capstone
+
+## Overview
+
+The V-Score Validator evaluates a product idea across two dimensions:
+
+- PoC Viability
+- Market Viability
+
+using eight specialized evaluator agents coordinated by a V-Score Orchestrator.
+
+## Architecture
+
+- 1 Orchestrator Agent
+- 8 Specialist Agents
+- 10 Skills
+- Memory Layer
+- Self-learning support
+
+## Workflow
+
+Idea
+→ Orchestrator
+→ 8 Evaluator Agents
+→ Weighted Scores
+→ Final Verdict
+
+## Features
+
+- Agent orchestration
+- Specialized evaluation skills
+- Persistent evaluation memory
+- Traceable scoring
+- Plain-language recommendation
+
+## Tech Stack
+
+- Claude Code
+- Agentic Architecture
+- Markdown Agents
+- Markdown Skills
+
+                Product Idea
+                     │
+                     ▼
+          V-Score Orchestrator
+                     │
+      ┌──────────────┼──────────────┐
+      ▼              ▼              ▼
+ Technical      Defined Scope   Resources
+ Novelty
+      ▼              ▼              ▼
+ Measurable      Pain         Willingness
+ Outcome         Severity     to Pay
+      ▼              ▼              ▼
+ Market Size   Differentiation
+                     │
+                     ▼
+          calculate-v-score
+                     │
+                     ▼
+           generate-verdict
+                     │
+                     ▼
+              Final Recommendation
