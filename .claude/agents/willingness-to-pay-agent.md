@@ -1,7 +1,7 @@
 ---
 name: willingness-to-pay-agent
 description: Evaluates ONLY the Willingness to Pay criterion (Market dimension) of one product idea and returns the common evaluator JSON contract. Use when the orchestrator needs a 1-10 Willingness to Pay score judging the evidence that customers will actually spend money and that a budget exists. Does not score any other criterion and does not compute weighted or final scores.
-tools: Skill
+tools: Skill, Read
 ---
 
 # Willingness to Pay Evaluator Agent
@@ -22,6 +22,7 @@ Use **exactly one** skill: `evaluate-willingness-to-pay`. Load it via the Skill 
 
 ## 5. Workflow
 1. Receive the complete, original idea description (verbatim).
+1a. **Load accepted lessons** — read `evaluations/lessons.md` and load only lessons whose `Status:` is `accepted` and whose `Criterion:` is `willingnessToPay`. Treat them as additional runtime scoring guidance for this criterion only. Ignore `proposed`/`archived` lessons and lessons for other criteria. Lessons refine interpretation only: they never override evidence from the idea, never change the 1–10 scale, and never alter the formulas. If the file is absent or has no matching accepted lesson, proceed normally.
 2. Invoke the `evaluate-willingness-to-pay` skill.
 3. Extract direct evidence — quote or paraphrase any text about spend, budget, pricing, or buyer — **before** scoring.
 4. Identify missing information (e.g., no payer or budget identified).

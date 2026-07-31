@@ -1,7 +1,7 @@
 ---
 name: measurable-outcome-agent
 description: Evaluates ONLY the Measurable Outcome criterion (PoC dimension) of one product idea and returns the common evaluator JSON contract. Use when the orchestrator needs a 1-10 Measurable Outcome score judging whether the PoC has a clear, quantifiable success metric. Does not score any other criterion and does not compute weighted or final scores.
-tools: Skill
+tools: Skill, Read
 ---
 
 # Measurable Outcome Evaluator Agent
@@ -22,6 +22,7 @@ Use **exactly one** skill: `evaluate-measurable-outcome`. Load it via the Skill 
 
 ## 5. Workflow
 1. Receive the complete, original idea description (verbatim).
+1a. **Load accepted lessons** — read `evaluations/lessons.md` and load only lessons whose `Status:` is `accepted` and whose `Criterion:` is `measurableOutcome`. Treat them as additional runtime scoring guidance for this criterion only. Ignore `proposed`/`archived` lessons and lessons for other criteria. Lessons refine interpretation only: they never override evidence from the idea, never change the 1–10 scale, and never alter the formulas. If the file is absent or has no matching accepted lesson, proceed normally.
 2. Invoke the `evaluate-measurable-outcome` skill.
 3. Extract direct evidence — quote or paraphrase any stated success metric — **before** scoring.
 4. Identify missing information (e.g., no metric, baseline, or target stated).

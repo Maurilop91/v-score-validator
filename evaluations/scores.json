@@ -1,0 +1,82 @@
+[
+  {
+    "id": "eval-2026-07-31-001",
+    "timestamp": "2026-07-31T14:00:00Z",
+    "ideaTitle": null,
+    "ideaDescription": "An AI-powered forecasting tool for independent restaurants in Montevideo. It uses historical sales, weather, and local event data to recommend daily ingredient purchases. The MVP will be tested with ten restaurants for eight weeks. Success means reducing food waste by at least 15%. Restaurants currently make purchasing decisions manually. The product would use a monthly subscription, but no willingness-to-pay interviews have been completed. Existing restaurant management products provide forecasting, but they are usually designed for larger chains.",
+    "tags": ["forecasting", "restaurants", "food-waste", "montevideo", "subscription", "ai", "mvp"],
+    "criterionScores": {
+      "technicalNovelty": 3,
+      "definedScope": 7,
+      "resourceAccessibility": 6,
+      "measurableOutcome": 7,
+      "painSeverity": 7,
+      "willingnessToPay": 4,
+      "marketSize": 4,
+      "differentiation": 5
+    },
+    "pocScore": 56,
+    "marketScore": 53,
+    "verdict": "Reframe or Shelve"
+  },
+  {
+    "id": "eval-2026-07-31-002",
+    "timestamp": "2026-07-31T15:00:00Z",
+    "ideaTitle": null,
+    "ideaDescription": "A demand-forecasting mobile app for independent coffee shops in Buenos Aires. It uses past sales and local weather to suggest daily bean and milk purchases. The pilot runs with eight cafes for six weeks, aiming to cut waste by 20%. Owners currently guess quantities by hand. A monthly subscription is planned, but pricing has not been tested with owners. Large coffee chains already have inventory tools, but nothing is tailored to small independent cafes.",
+    "tags": ["forecasting", "coffee-shops", "cafes", "waste", "buenos-aires", "subscription", "mobile-app"],
+    "criterionScores": {
+      "technicalNovelty": 4,
+      "definedScope": 8,
+      "resourceAccessibility": 6,
+      "measurableOutcome": 8,
+      "painSeverity": 6,
+      "willingnessToPay": 4,
+      "marketSize": 4,
+      "differentiation": 6
+    },
+    "pocScore": 64,
+    "marketScore": 50,
+    "verdict": "Reframe or Shelve"
+  },
+  {
+    "id": "eval-2026-07-31-003",
+    "timestamp": "2026-07-31T16:00:00Z",
+    "ideaTitle": null,
+    "ideaDescription": "A forecasting tool for independent restaurants in Montevideo that recommends daily ingredient purchases using historical sales, weather forecasts, and local event data. The initial target is ten restaurants with between one and three locations. The MVP will run for eight weeks. Restaurants currently estimate demand manually and frequently lose money because of food waste and stock shortages. The product will integrate with existing point-of-sale exports rather than requiring a full system replacement. Success will be measured by: reducing food waste by at least 15%; reducing stock shortages by at least 10%; achieving weekly usage from at least 8 of the 10 restaurants. The proposed business model is a monthly subscription of USD 60 per location. Three restaurant owners have said they would consider paying between USD 40 and USD 80 if the tool demonstrates measurable savings. Existing restaurant management products provide forecasting, but most target larger chains and require complex onboarding.",
+    "tags": ["forecasting", "restaurants", "food-waste", "stock-shortages", "montevideo", "subscription", "pos-integration", "mvp"],
+    "criterionScores": {
+      "technicalNovelty": 3,
+      "definedScope": 8,
+      "resourceAccessibility": 7,
+      "measurableOutcome": 8,
+      "painSeverity": 7,
+      "willingnessToPay": 5,
+      "marketSize": 4,
+      "differentiation": 5
+    },
+    "pocScore": 63,
+    "marketScore": 56,
+    "verdict": "Reframe or Shelve"
+  },
+  {
+    "id": "eval-2026-07-31-004",
+    "timestamp": "2026-07-31T17:00:00Z",
+    "ideaTitle": null,
+    "ideaDescription": "A real-time fraud detection network for small banks that allows participating institutions to train a shared machine-learning model without exchanging raw customer or transaction data. The system would use federated learning and privacy-preserving aggregation. Each bank would keep its data locally while contributing model updates to the network. The initial market is regional banks in Latin America with fewer than 500,000 customers. Fraud teams currently depend on isolated internal models and cannot learn from fraud patterns detected by other institutions. Five compliance and fraud managers have confirmed that cross-bank fraud intelligence would be valuable. Two said their institutions already spend more than USD 100,000 per year on fraud detection systems. The MVP would require at least three banks, access to representative transaction data, legal approval, secure deployment infrastructure, and a six-month pilot. Success would mean: detecting at least 10% more fraudulent transactions; maintaining false-positive rates below the existing baseline; proving that no raw customer data leaves a participating bank. No partner bank has formally agreed to participate yet.",
+    "tags": ["fraud-detection", "federated-learning", "banks", "privacy", "latin-america", "b2b", "pilot"],
+    "criterionScores": {
+      "technicalNovelty": 5,
+      "definedScope": 7,
+      "resourceAccessibility": 2,
+      "measurableOutcome": 9,
+      "painSeverity": 6,
+      "willingnessToPay": 7,
+      "marketSize": 6,
+      "differentiation": 7
+    },
+    "pocScore": 56,
+    "marketScore": 64,
+    "verdict": "Reframe or Shelve"
+  }
+]

@@ -1,7 +1,7 @@
 ---
 name: defined-scope-agent
 description: Evaluates ONLY the Defined Scope criterion (PoC dimension) of one product idea and returns the common evaluator JSON contract. Use when the orchestrator needs a 1-10 Defined Scope score judging whether the PoC has a clearly bounded, buildable problem and deliverable. Does not score any other criterion and does not compute weighted or final scores.
-tools: Skill
+tools: Skill, Read
 ---
 
 # Defined Scope Evaluator Agent
@@ -22,6 +22,7 @@ Use **exactly one** skill: `evaluate-defined-scope`. Load it via the Skill tool 
 
 ## 5. Workflow
 1. Receive the complete, original idea description (verbatim).
+1a. **Load accepted lessons** — read `evaluations/lessons.md` and load only lessons whose `Status:` is `accepted` and whose `Criterion:` is `definedScope`. Treat them as additional runtime scoring guidance for this criterion only. Ignore `proposed`/`archived` lessons and lessons for other criteria. Lessons refine interpretation only: they never override evidence from the idea, never change the 1–10 scale, and never alter the formulas. If the file is absent or has no matching accepted lesson, proceed normally.
 2. Invoke the `evaluate-defined-scope` skill.
 3. Extract direct evidence — quote or paraphrase the exact text describing the problem and deliverable — **before** scoring.
 4. Identify missing information (e.g., no concrete deliverable stated).

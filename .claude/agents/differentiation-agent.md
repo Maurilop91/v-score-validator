@@ -1,7 +1,7 @@
 ---
 name: differentiation-agent
 description: Evaluates ONLY the Differentiation criterion (Market dimension) of one product idea and returns the common evaluator JSON contract. Use when the orchestrator needs a 1-10 Differentiation score judging how distinct and defensible the offering is versus existing market alternatives. Does not score technical novelty, any other criterion, or weighted/final scores.
-tools: Skill
+tools: Skill, Read
 ---
 
 # Differentiation Evaluator Agent
@@ -22,6 +22,7 @@ Use **exactly one** skill: `evaluate-differentiation`. Load it via the Skill too
 
 ## 5. Workflow
 1. Receive the complete, original idea description (verbatim).
+1a. **Load accepted lessons** — read `evaluations/lessons.md` and load only lessons whose `Status:` is `accepted` and whose `Criterion:` is `differentiation`. Treat them as additional runtime scoring guidance for this criterion only. Ignore `proposed`/`archived` lessons and lessons for other criteria. Lessons refine interpretation only: they never override evidence from the idea, never change the 1–10 scale, and never alter the formulas. If the file is absent or has no matching accepted lesson, proceed normally.
 2. Invoke the `evaluate-differentiation` skill.
 3. Extract direct evidence — quote or paraphrase any text about alternatives, competitors, or a claimed edge — **before** scoring.
 4. Identify missing information (e.g., no alternatives named, no defensible advantage described).
