@@ -78,5 +78,25 @@
     "pocScore": 56,
     "marketScore": 64,
     "verdict": "Reframe or Shelve"
+  },
+  {
+    "id": "eval-2026-07-31-005",
+    "timestamp": "2026-07-31T18:00:00Z",
+    "ideaTitle": null,
+    "ideaDescription": "An AI-powered blockchain platform that will transform healthcare globally. The platform will connect patients, doctors, hospitals, insurance companies, pharmacies, and governments in one ecosystem. Artificial intelligence will improve diagnoses, blockchain will secure medical records, and automation will reduce costs. The target market is everyone who uses healthcare. The product will generate revenue through subscriptions, advertising, transaction fees, partnerships, and data services. The goal is to launch worldwide as soon as possible.",
+    "tags": ["healthcare", "blockchain", "ai", "platform", "global", "buzzword"],
+    "criterionScores": {
+      "technicalNovelty": 2,
+      "definedScope": 1,
+      "resourceAccessibility": 2,
+      "measurableOutcome": 3,
+      "painSeverity": 3,
+      "willingnessToPay": 3,
+      "marketSize": 8,
+      "differentiation": 2
+    },
+    "pocScore": 17,
+    "marketScore": 39,
+    "verdict": "Reframe or Shelve"
   }
 ]
