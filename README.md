@@ -35,6 +35,9 @@ A running record of every prompt given in this project.
 29. gh repo create v-score-validator --public --source=. --push
 30. commit and push
 31. Refactor the V-Score calculation layer so all deterministic logic runs in scripts, not agent reasoning. Create scripts/calculate-v-score.js (stdin 8 scores -> PoC/Market + calculation strings; validate required/integer/1-10; non-zero exit + structured stderr on error) and scripts/generate-verdict.js (stdin pocScore/marketScore -> name/pocLevel/marketLevel/explanation; validate required/integer/10-100). Node.js, no external deps, exact formulas and 65-inclusive matrix. Update the orchestrator to run the scripts via Bash, parse their JSON, hard-stop on non-zero/invalid, and never recompute; update the two skills to teach script invocation instead of arithmetic. Do not change scoring behavior, weights, threshold, verdict names, or memory; no duplicated formulas in prompts; no orchestrator fallback math. Add deterministic tests (all-10s, all-1s, 50/100, 100/50, 65/65, missing field, score 11, non-integer); run them and report.
+32. test it first with the last idea I give you
+33. yes, commit and push
+34. you add the last prompt to the readme?
 
 # V-Score Validator
 
