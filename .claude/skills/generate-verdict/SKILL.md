@@ -1,52 +1,38 @@
 ---
 name: generate-verdict
-description: Deterministically maps a PoC Score and Market Score to one of four V-Score verdicts using the official 65-point threshold, then writes a plain-language recommendation. Trigger after calculate-v-score produces both dimension scores. This skill applies fixed decision rules and does not re-judge any criterion.
+description: Explains when and how to derive the official verdict by running the deterministic script scripts/generate-verdict.js. Trigger after calculate-v-score returns pocScore and marketScore. The model performs NO threshold or matrix logic itself - the script is the single source of truth for the 65-point threshold and the verdict matrix.
 ---
 
-# Generate Verdict
+# Generate Verdict (script-driven)
 
 ## Purpose
-Convert the two dimension scores into the final verdict and a plain-language recommendation. This is **deterministic decision logic** — it must not re-score or reinterpret the evaluators.
+Convert the two dimension scores into the official verdict by executing a deterministic script. **Do not apply the threshold or pick the verdict in prose** — run the script and use its output. The 65-point threshold and the verdict matrix live only in `scripts/generate-verdict.js`.
 
-## Inputs
-- `pocScore` (10–100)
-- `marketScore` (10–100)
+## When to invoke
+Immediately after `calculate-v-score.js` returns `pocScore` and `marketScore`.
 
-## Threshold
-The official threshold is **65**, applied inclusively: a score of exactly 65 **passes** (`>= 65`).
+## How to invoke
+Pipe the two scores to the script via Bash:
 
-## Decision Rules (exact)
-| PoC        | Market      | Verdict                 |
-|------------|-------------|-------------------------|
-| `>= 65`    | `>= 65`     | **Go / Full Speed Ahead** |
-| `< 65`     | `>= 65`     | **De-risk First**       |
-| `>= 65`    | `< 65`      | **Validate Demand**     |
-| `< 65`     | `< 65`      | **Reframe or Shelve**   |
-
-## Plain-Language Meaning
-- **Go / Full Speed Ahead** — Both feasibility and market are strong; proceed to build.
-- **De-risk First** — The market is attractive but the PoC is risky; reduce technical/feasibility risk before committing.
-- **Validate Demand** — It is buildable but the market is unproven; validate real demand before investing further.
-- **Reframe or Shelve** — Neither dimension clears the bar; rework the idea or set it aside.
-
-## Traceability Rule
-The verdict must reference both scores and, where useful, the weakest contributing criteria so the recommendation traces back to specific evaluators.
-
-## Required Structured Output
-```json
-{
-  "pocScore": 69,
-  "marketScore": 72,
-  "pocPass": true,
-  "marketPass": true,
-  "verdict": "Go / Full Speed Ahead",
-  "recommendation": "string"
-}
+```bash
+echo '{"pocScore": 0, "marketScore": 0}' | node scripts/generate-verdict.js
 ```
 
-## Worked Examples
-- PoC 69, Market 72 → pocPass true, marketPass true → **Go / Full Speed Ahead**.
-- PoC 40, Market 80 → pocPass false, marketPass true → **De-risk First**.
-- PoC 80, Market 40 → pocPass true, marketPass false → **Validate Demand**.
-- PoC 65, Market 65 → both pass (inclusive) → **Go / Full Speed Ahead**.
-- PoC 30, Market 25 → both fail → **Reframe or Shelve**.
+## What the script returns (stdout, JSON)
+```json
+{
+  "name": "Go / Full Speed Ahead | De-risk First | Validate Demand | Reframe or Shelve",
+  "pocLevel": "High | Low",
+  "marketLevel": "High | Low",
+  "explanation": "string"
+}
+```
+Use these values **exactly as returned**. The `name` is the official verdict — do not rename, re-map, or second-guess it. The `explanation` may be quoted or folded into the final report, but must not contradict it.
+
+## Validation & errors (handled by the script)
+The script enforces: both `pocScore` and `marketScore` present, both integers, both between 10 and 100. On any violation it prints a structured JSON error to **stderr** and exits **non-zero**. If that happens, hard-stop the run with a `SCRIPT_ERROR` — never decide the verdict yourself.
+
+## Rules
+- Never reproduce the threshold value or the verdict matrix in your reasoning or output — the script owns them.
+- Never invoke this before `calculate-v-score.js` has produced valid scores.
+- The script is deterministic: the same two inputs always yield the same verdict.
